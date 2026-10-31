@@ -36,6 +36,8 @@ constexpr std::size_t MAX_PROCS = 256;
 constexpr std::size_t RECENT_CAPACITY = 16;
 // evicted entries that pile up before the kernel asks the summarizer to compress them
 constexpr std::size_t GC_THRESHOLD = 8;
+// hard cap on parked evictions so a driver that never runs gc cannot grow kernel memory
+constexpr std::size_t EVICTED_MAX = 64;
 // longest working set summary the kernel will store, in bytes
 constexpr std::size_t WORKING_SET_MAX_BYTES = 1600;
 // replay log keeps this many most recent operations

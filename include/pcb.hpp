@@ -64,6 +64,8 @@ struct Process {
     // appends to recent and parks anything the ring pushed out until the summarizer runs
     void remember(std::string entry) {
         if (auto out = recent.push(std::move(entry))) evicted.push_back(std::move(*out));
+        // the oldest eviction is lost for good once the cap is hit, the summarizer should have run by then
+        if (evicted.size() > EVICTED_MAX) evicted.erase(evicted.begin());
     }
 
     bool needs_gc() const { return evicted.size() >= GC_THRESHOLD; }

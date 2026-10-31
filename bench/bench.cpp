@@ -67,6 +67,8 @@ int main() {
         t_interrupt.push_back(t1 - t0);
         t_schedule.push_back(t2 - t1);
         t_submit.push_back(t3 - t2);
+        // the driver would summarize here, the bench stands in with a fixed working set
+        if (r["needs_gc"] == true) k.handle(json{{"op", "gc"}, {"pid", s["pid"]}, {"working_set", "holds one cap at 24500, rolled twice, vol steady"}});
     }
 
     // the pure algorithms are timed without json so the cost of the wire format is visible separately
