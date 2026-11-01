@@ -1,0 +1,37 @@
+kernel day 1: ctx 367 prompt 557 orders 1 rejected 0 2125ms [{"kind":"cap","asked":200,"hours":168,"premium":1344,"limit":1650}] rejected []
+kernel day 2: ctx 521 prompt 765 orders 1 rejected 0 1923ms [{"kind":"cap","asked":168,"hours":168,"premium":2184,"limit":2184}] rejected []
+kernel day 3: ctx 668 prompt 964 orders 1 rejected 0 1698ms [{"kind":"cap","asked":168,"hours":168,"premium":2520,"limit":2600}] rejected []
+kernel day 4: ctx 746 prompt 1066 orders 1 rejected 0 2016ms [{"kind":"cap","asked":168,"hours":168,"premium":2352,"limit":2420}] rejected []
+kernel day 5: ctx 761 prompt 1078 orders 1 rejected 0 2649ms [{"kind":"cap","asked":168,"hours":168,"premium":1176,"limit":1210}] rejected []
+kernel day 6: ctx 764 prompt 1083 orders 1 rejected 0 1470ms [{"kind":"cap","asked":168,"hours":168,"premium":1176,"limit":1211}] rejected []
+kernel day 7: ctx 797 prompt 1133 orders 1 rejected 0 2058ms [{"kind":"cap","asked":168,"hours":168,"premium":1344,"limit":1400}] rejected []
+kernel day 8: ctx 802 prompt 1141 orders 1 rejected 0 1880ms [{"kind":"cap","asked":168,"hours":168,"premium":1512,"limit":1600}] rejected []
+kernel day 9: ctx 774 prompt 1097 orders 1 rejected 0 1646ms [{"kind":"cap","asked":168,"hours":168,"premium":2016,"limit":2100}] rejected []
+kernel day 10: ctx 773 prompt 1102 orders 1 rejected 0 1677ms [{"kind":"cap","asked":168,"hours":168,"premium":2688,"limit":2769}] rejected []
+kernel day 11: ctx 833 prompt 1185 orders 1 rejected 0 1140ms [{"kind":"cap","asked":168,"hours":168,"premium":2520,"limit":2595}] rejected []
+kernel day 12: ctx 832 prompt 1184 orders 1 rejected 0 1314ms [{"kind":"cap","asked":168,"hours":168,"premium":1344,"limit":1380}] rejected []
+kernel day 13: ctx 770 prompt 1095 orders 1 rejected 0 1703ms [{"kind":"cap","asked":168,"hours":168,"premium":840,"limit":950}] rejected []
+kernel day 14: ctx 786 prompt 1121 orders 1 rejected 0 1550ms [{"kind":"cap","asked":168,"hours":168,"premium":1344,"limit":1400}] rejected []
+kernel day 15: ctx 798 prompt 1141 orders 1 rejected 0 1521ms [{"kind":"cap","asked":168,"hours":168,"premium":1344,"limit":1344}] rejected []
+kernel day 16: ctx 781 prompt 1127 orders 1 rejected 0 2061ms [{"kind":"cap","asked":168,"hours":168,"premium":2016,"limit":2076}] rejected []
+kernel day 17: ctx 792 prompt 1149 orders 1 rejected 0 1335ms [{"kind":"cap","asked":168,"hours":168,"premium":2352,"limit":2500}] rejected []
+kernel day 18: ctx 785 prompt 1143 orders 1 rejected 0 1463ms [{"kind":"cap","asked":168,"hours":168,"premium":2352,"limit":2500}] rejected []
+kernel day 19: ctx 788 prompt 1146 orders 1 rejected 0 1369ms [{"kind":"cap","asked":168,"hours":168,"premium":1176,"limit":1211}] rejected []
+kernel day 20: ctx 786 prompt 1142 orders 1 rejected 0 1651ms [{"kind":"cap","asked":168,"hours":168,"premium":1008,"limit":1038}] rejected []
+kernel day 21: ctx 786 prompt 1141 orders 1 rejected 0 1396ms [{"kind":"cap","asked":168,"hours":168,"premium":1176,"limit":1211}] rejected []
+kernel day 22: ctx 802 prompt 1163 orders 1 rejected 0 2397ms [{"kind":"cap","asked":168,"hours":168,"premium":1344,"limit":1400}] rejected []
+kernel day 23: ctx 790 prompt 1149 orders 0 rejected 1 1458ms [{"kind":"cap","asked":150,"hours":168,"premium":2016,"limit":1854}] rejected [{"i":0,"reason":"slippage"}]
+kernel day 24: ctx 797 prompt 1158 orders 1 rejected 0 2419ms [{"kind":"cap","asked":168,"hours":168,"premium":2184,"limit":2250}] rejected []
+kernel day 25: ctx 808 prompt 1172 orders 0 rejected 1 1569ms [{"kind":"cap","asked":136,"hours":168,"premium":2016,"limit":1768}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+kernel day 26: ctx 839 prompt 1220 orders 0 rejected 1 2894ms [{"kind":"cap","asked":136,"hours":168,"premium":1176,"limit":980}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+kernel day 27: ctx 797 prompt 1157 orders 0 rejected 1 1792ms [{"kind":"cap","asked":136,"hours":168,"premium":840,"limit":680}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+kernel day 28: ctx 791 prompt 1149 orders 0 rejected 1 1545ms [{"kind":"cap","asked":136,"hours":168,"premium":1512,"limit":1260}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+kernel day 29: ctx 790 prompt 1145 orders 0 rejected 1 1785ms [{"kind":"cap","asked":136,"hours":168,"premium":1176,"limit":980}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+kernel day 30: ctx 787 prompt 1146 orders 0 rejected 1 1728ms [{"kind":"cap","asked":136,"hours":168,"premium":1848,"limit":1800}] rejected [{"i":0,"reason":"max_gpu_hours"}]
+
+| arm | days | model calls | prompt tokens total | largest prompt day 1 | largest prompt day 30 | cached | completion | cost ¢ | wall s | orders | unsafe orders | kernel rejections | premium spent $ | gpu-h |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| kernel | 30 | 52 | 33019 | 557 | 1146 | 6642 | 11412 | 8.45 | 80 | 23 | 0 | 7 | 393.12 | 3864 |
+
+wrote results-2026-11-01T22-15-36-057Z.json
+exit 0

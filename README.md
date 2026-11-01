@@ -46,6 +46,16 @@ Measured on a Snapdragon X Elite laptop, 64 processes across 8 tenants, 20,000 i
 
 Model choice came from an evaluation on the kernel's own prompts across six Meta models and two effort settings, 144 calls. Short version: minimal effort is the only reliable setting, five of six models then agree on every decision, and the cheapest valid one costs 0.013¢ per agent turn. Full tables in [docs/MODEL-EVAL.md](docs/MODEL-EVAL.md).
 
+The same strategy was also run for 30 simulated days as a stock LangGraph ReAct agent against the same order book, the loop TradingAgents and ai-hedge-fund are built on, with and without the kernel in front of it:
+
+| 30 days, same model, same market | LangGraph agent, full thread | LangGraph agent, last 10 messages | kernel |
+|---|---|---|---|
+| largest prompt on day 30 | 16,075 tokens | 1,942 | 1,146 |
+| prompt tokens sent | 845k | 153k | 33k |
+| cost at list price | 24.0¢ | 16.8¢ | 8.5¢ |
+| GPU-hours covered | 3,864 | 3,864 | 3,864 |
+
+Method, caveats and the bug the benchmark found in the kernel's own feedback line are in [docs/CONTEXT-BENCH.md](docs/CONTEXT-BENCH.md).
 
 ## Build and run
 

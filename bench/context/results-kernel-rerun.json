@@ -1,0 +1,970 @@
+{
+  "model": "muse-spark-1.3",
+  "days": 30,
+  "window": 10,
+  "limits": {
+    "max_premium_cents": 400000,
+    "max_gpu_hours": 4000,
+    "max_abs_delta_bps": 30000000,
+    "strike_band_bps": 1500,
+    "max_slippage_bps": 300,
+    "max_orders_per_turn": 2
+  },
+  "results": [
+    {
+      "arm": "kernel",
+      "rows": [
+        {
+          "day": 1,
+          "prompt": 557,
+          "maxPrompt": 557,
+          "cached": 0,
+          "completion": 296,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 195425,
+          "ms": 2129,
+          "modelMs": 2125,
+          "contextTokens": 367,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "forward above index so no lock, start small ATM cap to begin hedge",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 200,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1650,
+              "delta_bps": 827111
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "prompt": 765,
+          "maxPrompt": 765,
+          "cached": 0,
+          "completion": 394,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 263075,
+          "ms": 1926,
+          "modelMs": 1923,
+          "contextTokens": 521,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2184,
+          "note": "forward above index, add small ATM cap to build hedge slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2184,
+              "limit_premium_cents": 2184,
+              "delta_bps": 891107
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "prompt": 964,
+          "maxPrompt": 964,
+          "cached": 0,
+          "completion": 322,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 257350,
+          "ms": 1701,
+          "modelMs": 1698,
+          "contextTokens": 668,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2520,
+          "note": "forward above index, add small ATM cap to build hedge slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2520,
+              "limit_premium_cents": 2600,
+              "delta_bps": 882344
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "prompt": 1066,
+          "maxPrompt": 1066,
+          "cached": 0,
+          "completion": 347,
+          "calls": 2,
+          "gcPrompt": 275,
+          "microcents": 289475,
+          "ms": 3309,
+          "modelMs": 2016,
+          "contextTokens": 746,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2352,
+          "note": "forward above index, add small ATM cap to build hedge slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 290,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2352,
+              "limit_premium_cents": 2420,
+              "delta_bps": 844918
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "prompt": 1078,
+          "maxPrompt": 1078,
+          "cached": 369,
+          "completion": 545,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 325785,
+          "ms": 2653,
+          "modelMs": 2649,
+          "contextTokens": 761,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1176,
+          "note": "premium cheap at 7 vs vol, forward above index so add small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1176,
+              "limit_premium_cents": 1210,
+              "delta_bps": 796848
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "prompt": 1083,
+          "maxPrompt": 1083,
+          "cached": 369,
+          "completion": 278,
+          "calls": 2,
+          "gcPrompt": 386,
+          "microcents": 222795,
+          "ms": 3100,
+          "modelMs": 1470,
+          "contextTokens": 764,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1176,
+          "note": "premium cheap at 7 vs vol, forward above index so add small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1176,
+              "limit_premium_cents": 1211,
+              "delta_bps": 951318
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "prompt": 1133,
+          "maxPrompt": 1133,
+          "cached": 0,
+          "completion": 376,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 301425,
+          "ms": 2061,
+          "modelMs": 2058,
+          "contextTokens": 797,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "premium 8c still cheap vs vol, forward above index so add small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1400,
+              "delta_bps": 849149
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "prompt": 1141,
+          "maxPrompt": 1141,
+          "cached": 369,
+          "completion": 345,
+          "calls": 2,
+          "gcPrompt": 430,
+          "microcents": 258960,
+          "ms": 2989,
+          "modelMs": 1880,
+          "contextTokens": 802,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1512,
+          "note": "premium 9c cheap vs vol, forward above index so add small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 290,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1512,
+              "limit_premium_cents": 1600,
+              "delta_bps": 896456
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "prompt": 1097,
+          "maxPrompt": 1097,
+          "cached": 0,
+          "completion": 379,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 298200,
+          "ms": 1649,
+          "modelMs": 1646,
+          "contextTokens": 774,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2016,
+          "note": "premium 12c up vs 9c but vol high, forward above index so small ATM cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 295,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2016,
+              "limit_premium_cents": 2100,
+              "delta_bps": 837575
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "prompt": 1102,
+          "maxPrompt": 1102,
+          "cached": 369,
+          "completion": 297,
+          "calls": 2,
+          "gcPrompt": 397,
+          "microcents": 233175,
+          "ms": 3069,
+          "modelMs": 1677,
+          "contextTokens": 773,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2688,
+          "note": "forward above index, vol high vs 16c premium so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2688,
+              "limit_premium_cents": 2769,
+              "delta_bps": 924633
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "prompt": 1185,
+          "maxPrompt": 1185,
+          "cached": 0,
+          "completion": 319,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 283700,
+          "ms": 1142,
+          "modelMs": 1140,
+          "contextTokens": 833,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2520,
+          "note": "forward above index, premium 15c vs high vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2520,
+              "limit_premium_cents": 2595,
+              "delta_bps": 883509
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "prompt": 1184,
+          "maxPrompt": 1184,
+          "cached": 369,
+          "completion": 281,
+          "calls": 2,
+          "gcPrompt": 481,
+          "microcents": 237645,
+          "ms": 2129,
+          "modelMs": 1314,
+          "contextTokens": 832,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "forward above index, 8c premium cheap vs vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1380,
+              "delta_bps": 826967
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "prompt": 1095,
+          "maxPrompt": 1095,
+          "cached": 0,
+          "completion": 344,
+          "calls": 1,
+          "gcPrompt": 0,
+          "microcents": 283075,
+          "ms": 1706,
+          "modelMs": 1703,
+          "contextTokens": 770,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 840,
+          "note": "forward flat to index, 5c premium cheap vs 21% vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 840,
+              "limit_premium_cents": 950,
+              "delta_bps": 762473
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "prompt": 1121,
+          "maxPrompt": 1121,
+          "cached": 369,
+          "completion": 370,
+          "calls": 2,
+          "gcPrompt": 425,
+          "microcents": 267035,
+          "ms": 2810,
+          "modelMs": 1550,
+          "contextTokens": 786,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "forward above index, 8c premium cheap vs vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1400,
+              "delta_bps": 827992
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "prompt": 1141,
+          "maxPrompt": 1141,
+          "cached": 369,
+          "completion": 367,
+          "calls": 2,
+          "gcPrompt": 291,
+          "microcents": 266920,
+          "ms": 2660,
+          "modelMs": 1521,
+          "contextTokens": 798,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "forward above index, 8c premium cheap vs vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 285,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1344,
+              "delta_bps": 820896
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "prompt": 1127,
+          "maxPrompt": 1127,
+          "cached": 369,
+          "completion": 542,
+          "calls": 2,
+          "gcPrompt": 271,
+          "microcents": 339345,
+          "ms": 3460,
+          "modelMs": 2061,
+          "contextTokens": 781,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2016,
+          "note": "forward above index, 12c premium cheap vs vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2016,
+              "limit_premium_cents": 2076,
+              "delta_bps": 884697
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "prompt": 1149,
+          "maxPrompt": 1149,
+          "cached": 369,
+          "completion": 301,
+          "calls": 2,
+          "gcPrompt": 282,
+          "microcents": 239780,
+          "ms": 2394,
+          "modelMs": 1335,
+          "contextTokens": 792,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2352,
+          "note": "forward equal index, premium 14c still cheap vs 59% vol, small ATM cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 275,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2352,
+              "limit_premium_cents": 2500,
+              "delta_bps": 884553
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "prompt": 1143,
+          "maxPrompt": 1143,
+          "cached": 0,
+          "completion": 346,
+          "calls": 2,
+          "gcPrompt": 277,
+          "microcents": 298695,
+          "ms": 2658,
+          "modelMs": 1463,
+          "contextTokens": 785,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2352,
+          "note": "forward above index, 14c premium cheap vs 59% vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 275,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2352,
+              "limit_premium_cents": 2500,
+              "delta_bps": 872390
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "prompt": 1146,
+          "maxPrompt": 1146,
+          "cached": 0,
+          "completion": 379,
+          "calls": 2,
+          "gcPrompt": 284,
+          "microcents": 313165,
+          "ms": 2518,
+          "modelMs": 1369,
+          "contextTokens": 788,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1176,
+          "note": "forward above index, 7c premium cheap vs 31% vol so small ATM cap slowly",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1176,
+              "limit_premium_cents": 1211,
+              "delta_bps": 780978
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "prompt": 1142,
+          "maxPrompt": 1142,
+          "cached": 0,
+          "completion": 366,
+          "calls": 2,
+          "gcPrompt": 281,
+          "microcents": 307110,
+          "ms": 2922,
+          "modelMs": 1651,
+          "contextTokens": 786,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1008,
+          "note": "forward above index so prefer cap, 6c premium cheap vs vol, small ATM add",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 275,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1008,
+              "limit_premium_cents": 1038,
+              "delta_bps": 971092
+            }
+          ]
+        },
+        {
+          "day": 21,
+          "prompt": 1141,
+          "maxPrompt": 1141,
+          "cached": 369,
+          "completion": 282,
+          "calls": 2,
+          "gcPrompt": 280,
+          "microcents": 230685,
+          "ms": 2402,
+          "modelMs": 1396,
+          "contextTokens": 786,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1176,
+          "note": "forward flat to index, 7c premium cheap vs 33% vol, small ATM cap within limits",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 275,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1176,
+              "limit_premium_cents": 1211,
+              "delta_bps": 785567
+            }
+          ]
+        },
+        {
+          "day": 22,
+          "prompt": 1163,
+          "maxPrompt": 1163,
+          "cached": 369,
+          "completion": 554,
+          "calls": 2,
+          "gcPrompt": 295,
+          "microcents": 349185,
+          "ms": 3531,
+          "modelMs": 2397,
+          "contextTokens": 802,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 1344,
+          "note": "forward flat, 8c premium cheap vs 35% vol, add small ATM cap within hour limits",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 1344,
+              "limit_premium_cents": 1400,
+              "delta_bps": 818724
+            }
+          ]
+        },
+        {
+          "day": 23,
+          "prompt": 1149,
+          "maxPrompt": 1149,
+          "cached": 369,
+          "completion": 389,
+          "calls": 2,
+          "gcPrompt": 283,
+          "microcents": 277190,
+          "ms": 2517,
+          "modelMs": 1458,
+          "contextTokens": 790,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "slippage"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "forward flat, 12c premium still cheap vs 50% vol, add small ATM cap within remaining hours",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 150,
+              "premium_cents": 2016,
+              "limit_premium_cents": 1854,
+              "delta_bps": 880257
+            }
+          ]
+        },
+        {
+          "day": 24,
+          "prompt": 1158,
+          "maxPrompt": 1158,
+          "cached": 369,
+          "completion": 487,
+          "calls": 2,
+          "gcPrompt": 281,
+          "microcents": 319945,
+          "ms": 3869,
+          "modelMs": 2419,
+          "contextTokens": 797,
+          "dropped": 0,
+          "orders": 1,
+          "rejected": [],
+          "unsafe": 0,
+          "premium": 2184,
+          "note": "add small ATM cap, premium 13c cheap vs vol, within hour limits",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 168,
+              "premium_cents": 2184,
+              "limit_premium_cents": 2250,
+              "delta_bps": 880913
+            }
+          ]
+        },
+        {
+          "day": 25,
+          "prompt": 1172,
+          "maxPrompt": 1172,
+          "cached": 0,
+          "completion": 353,
+          "calls": 2,
+          "gcPrompt": 309,
+          "microcents": 305615,
+          "ms": 2638,
+          "modelMs": 1569,
+          "contextTokens": 808,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 12c cheap vs 58% vol, forward flat, add small ATM cap within remaining hours",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 265,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 2016,
+              "limit_premium_cents": 1768,
+              "delta_bps": 827343
+            }
+          ]
+        },
+        {
+          "day": 26,
+          "prompt": 1220,
+          "maxPrompt": 1220,
+          "cached": 369,
+          "completion": 646,
+          "calls": 2,
+          "gcPrompt": 344,
+          "microcents": 395900,
+          "ms": 3893,
+          "modelMs": 2894,
+          "contextTokens": 839,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 7c cheap vs 31% vol, add remaining ATM cap within hour cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 1176,
+              "limit_premium_cents": 980,
+              "delta_bps": 803320
+            }
+          ]
+        },
+        {
+          "day": 27,
+          "prompt": 1157,
+          "maxPrompt": 1157,
+          "cached": 369,
+          "completion": 380,
+          "calls": 2,
+          "gcPrompt": 290,
+          "microcents": 274435,
+          "ms": 3141,
+          "modelMs": 1792,
+          "contextTokens": 797,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 5c cheap vs vol, add remaining ATM cap within hour cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 840,
+              "limit_premium_cents": 680,
+              "delta_bps": 841090
+            }
+          ]
+        },
+        {
+          "day": 28,
+          "prompt": 1149,
+          "maxPrompt": 1149,
+          "cached": 369,
+          "completion": 341,
+          "calls": 2,
+          "gcPrompt": 287,
+          "microcents": 256830,
+          "ms": 2700,
+          "modelMs": 1545,
+          "contextTokens": 791,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 9c cheap vs vol, add remaining ATM cap within hour cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 1512,
+              "limit_premium_cents": 1260,
+              "delta_bps": 935169
+            }
+          ]
+        },
+        {
+          "day": 29,
+          "prompt": 1145,
+          "maxPrompt": 1145,
+          "cached": 369,
+          "completion": 375,
+          "calls": 2,
+          "gcPrompt": 282,
+          "microcents": 270730,
+          "ms": 2886,
+          "modelMs": 1785,
+          "contextTokens": 790,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 7c cheap vs vol, use remaining 136h for ATM cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 270,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 1176,
+              "limit_premium_cents": 980,
+              "delta_bps": 817739
+            }
+          ]
+        },
+        {
+          "day": 30,
+          "prompt": 1146,
+          "maxPrompt": 1146,
+          "cached": 369,
+          "completion": 411,
+          "calls": 2,
+          "gcPrompt": 284,
+          "microcents": 286175,
+          "ms": 3063,
+          "modelMs": 1728,
+          "contextTokens": 787,
+          "dropped": 0,
+          "orders": 0,
+          "rejected": [
+            "max_gpu_hours"
+          ],
+          "unsafe": 0,
+          "premium": 0,
+          "note": "premium 11c cheap vs vol, use remaining 136h for ATM cap",
+          "syscalls": [
+            {
+              "call": "order",
+              "kind": "cap",
+              "strike_cents": 280,
+              "gpu_hours": 168,
+              "asked_gpu_hours": 136,
+              "premium_cents": 1848,
+              "limit_premium_cents": 1800,
+              "delta_bps": 824506
+            }
+          ]
+        }
+      ],
+      "final": {
+        "premium": 39312,
+        "hours": 3864,
+        "orders": 23
+      },
+      "seconds": 80
+    }
+  ]
+}
