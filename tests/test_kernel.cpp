@@ -110,7 +110,9 @@ static void test_risk_gate() {
     CHECK(ps["microcents"] == 2750);
     // the per turn order cap is enforced on the second turn as well
     wake(k, 1);
-    k.handle(json{{"op", "schedule"}});
+    // the refused order is in the next prompt with the numbers the model needs to re-quote
+    json s2 = k.handle(json{{"op", "schedule"}});
+    CHECK(s2["user"].get<std::string>().find("reason slippage quoted 1200 limit 1000 hours 1") != std::string::npos);
     json calls2 = json::array({
         order("cap", 10000, 10000, 10, 1000, 1000, 100),
         order("cap", 10000, 10000, 10, 1000, 1000, 100),

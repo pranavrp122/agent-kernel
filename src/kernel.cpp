@@ -159,7 +159,8 @@ json Kernel::op_submit(const json& r) {
         const std::string why = check_order(*p, o, orders_this_turn);
         if (!why.empty()) {
             rejected.push_back(json::object({{"i", i}, {"reason", why}}));
-            p->remember("rejected " + o.kind + " strike " + std::to_string(o.strike_cents) + " reason " + why);
+            // the numbers go into history so the model can re-quote next turn instead of repeating the same refused order
+            p->remember("rejected " + o.kind + " strike " + std::to_string(o.strike_cents) + " reason " + why + " quoted " + std::to_string(o.premium_cents) + " limit " + std::to_string(o.limit_premium_cents) + " hours " + std::to_string(o.gpu_hours));
             continue;
         }
         apply_order(*p, o);
