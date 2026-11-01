@@ -40,6 +40,8 @@ Measured on a Snapdragon X Elite laptop, 64 processes across 8 tenants, 20,000 i
 | Node to kernel pipe round trip | 0.15 ms | 2.2 ms |
 | model call, Muse Spark 1.3, minimal effort | 2.3 s | 3.4 s |
 
+Model choice came from an evaluation on the kernel's own prompts across six Meta models and two effort settings, 144 calls. Short version: minimal effort is the only reliable setting, five of six models then agree on every decision, and the cheapest valid one costs 0.013¢ per agent turn. Full tables in [docs/MODEL-EVAL.md](docs/MODEL-EVAL.md).
+
 
 ## Build and run
 
@@ -61,7 +63,7 @@ include/   types, ring buffer, process control block, scheduler, context assembl
 src/       kernel.cpp (every operation), main.cpp (the stdio loop)
 tests/     behavior tests, plain C++ with a CHECK macro
 bench/     latency benchmark with p50/p90/p99
-docs/      WALKTHROUGH.md (every component explained)
+docs/      WALKTHROUGH.md (every component explained) and MODEL-EVAL.md (every model test, with raw numbers)
 ```
 
 The Node driver, the console page at `/kernel`, and the MCP tools live in the Dodona platform repo on the `feature/agent-kernel` branch. [docs/WALKTHROUGH.md](docs/WALKTHROUGH.md) explains both halves.
