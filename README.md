@@ -12,6 +12,10 @@ flowchart LR
     K --- S[scheduler] --- C[context assembler] --- R[risk gate]
 ```
 
+![The kernel console: four agents in the process table, the log-scale latency ladder, the turn feed with accepted orders, and the replay log](docs/console.png)
+
+Four agents on the console, one of them submitted by an outside MCP client. Every row is kernel state: context tokens against budget, premium spent, delta-weighted GPU-hours, orders booked. The ladder on the right puts the kernel (16 µs) and the model (2.1 s) on one log axis.
+
 ## Why a kernel
 
 An agent that trades for a week will see thousands of events. If every event lands in its prompt, the prompt grows until the model forgets its own limits, and the bill grows with it. If the agent can call the order book directly, one hallucinated number is a real loss. The fixes are the same ones operating systems found decades ago:
