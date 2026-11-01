@@ -1,0 +1,1 @@
+{"name":"ctx-bench","private":true,"type":"module","dependencies":{"@langchain/core":"^1.2.18","@langchain/langgraph":"^1.5.1","@langchain/openai":"^1.6.2","zod":"^4.6.7"}}

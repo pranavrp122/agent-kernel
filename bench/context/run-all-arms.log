@@ -1,0 +1,99 @@
+kernel day 1: ctx 367 prompt 557 orders 1 rejected 0 2950ms
+kernel day 2: ctx 519 prompt 765 orders 0 rejected 1 2380ms
+kernel day 3: ctx 632 prompt 912 orders 0 rejected 1 1743ms
+kernel day 4: ctx 717 prompt 1021 orders 0 rejected 1 1799ms
+kernel day 5: ctx 715 prompt 1017 orders 0 rejected 1 2957ms
+kernel day 6: ctx 726 prompt 1017 orders 0 rejected 1 3583ms
+kernel day 7: ctx 719 prompt 1011 orders 0 rejected 1 1811ms
+kernel day 8: ctx 727 prompt 1020 orders 0 rejected 1 1973ms
+kernel day 9: ctx 738 prompt 1033 orders 0 rejected 1 2573ms
+kernel day 10: ctx 742 prompt 1037 orders 0 rejected 1 1592ms
+kernel day 11: ctx 747 prompt 1045 orders 0 rejected 1 1499ms
+kernel day 12: ctx 747 prompt 1048 orders 0 rejected 1 1699ms
+kernel day 13: ctx 745 prompt 1045 orders 0 rejected 1 1512ms
+kernel day 14: ctx 782 prompt 1106 orders 0 rejected 1 1837ms
+kernel day 15: ctx 811 prompt 1155 orders 0 rejected 1 2065ms
+kernel day 16: ctx 771 prompt 1119 orders 0 rejected 1 1446ms
+kernel day 17: ctx 772 prompt 1120 orders 0 rejected 1 2045ms
+kernel day 18: ctx 752 prompt 1095 orders 0 rejected 1 1545ms
+kernel day 19: ctx 723 prompt 1050 orders 0 rejected 1 1386ms
+kernel day 20: ctx 742 prompt 1079 orders 0 rejected 1 1875ms
+kernel day 21: ctx 748 prompt 1085 orders 0 rejected 1 1909ms
+kernel day 22: ctx 800 prompt 1157 orders 0 rejected 1 1763ms
+kernel day 23: ctx 802 prompt 1162 orders 0 rejected 1 1594ms
+kernel day 24: ctx 721 prompt 1054 orders 0 rejected 1 1589ms
+kernel day 25: ctx 715 prompt 1035 orders 0 rejected 1 1438ms
+kernel day 26: ctx 712 prompt 1026 orders 0 rejected 1 1450ms
+kernel day 27: ctx 730 prompt 1042 orders 0 rejected 1 1586ms
+kernel day 28: ctx 736 prompt 1038 orders 0 rejected 1 1308ms
+kernel day 29: ctx 731 prompt 1028 orders 0 rejected 1 1726ms
+kernel day 30: ctx 739 prompt 1031 orders 0 rejected 1 1441ms
+naive day 1: msgs 7 prompt 4145 (max 1554) calls 3 orders 1 unsafe 0 3304ms
+naive day 2: msgs 14 prompt 5861 (max 2127) calls 3 orders 1 unsafe 0 1922ms
+naive day 3: msgs 21 prompt 7521 (max 2680) calls 3 orders 1 unsafe 0 2332ms
+naive day 4: msgs 28 prompt 9167 (max 3229) calls 3 orders 1 unsafe 0 1804ms
+naive day 5: msgs 35 prompt 10782 (max 3767) calls 3 orders 1 unsafe 0 2204ms
+naive day 6: msgs 42 prompt 12420 (max 4313) calls 3 orders 1 unsafe 0 1879ms
+naive day 7: msgs 48 prompt 13904 (max 4793) calls 3 orders 1 unsafe 0 2354ms
+naive day 8: msgs 56 prompt 20614 (max 5374) calls 4 orders 1 unsafe 0 3484ms
+naive day 9: msgs 64 prompt 22927 (max 5957) calls 4 orders 1 unsafe 0 2260ms
+naive day 10: msgs 72 prompt 25270 (max 6541) calls 4 orders 1 unsafe 0 2843ms
+naive day 11: msgs 80 prompt 27591 (max 7118) calls 4 orders 1 unsafe 0 3056ms
+naive day 12: msgs 88 prompt 29905 (max 7697) calls 4 orders 1 unsafe 0 2002ms
+naive day 13: msgs 96 prompt 32212 (max 8274) calls 4 orders 1 unsafe 0 2242ms
+naive day 14: msgs 104 prompt 34583 (max 8864) calls 4 orders 1 unsafe 0 2372ms
+naive day 15: msgs 112 prompt 37005 (max 9472) calls 4 orders 1 unsafe 0 2536ms
+naive day 16: msgs 120 prompt 39432 (max 10078) calls 4 orders 1 unsafe 0 2601ms
+naive day 17: msgs 128 prompt 41875 (max 10689) calls 4 orders 1 unsafe 0 1762ms
+naive day 18: msgs 136 prompt 44306 (max 11295) calls 4 orders 1 unsafe 0 2352ms
+naive day 19: msgs 144 prompt 46723 (max 11901) calls 4 orders 1 unsafe 0 1908ms
+naive day 20: msgs 152 prompt 49152 (max 12511) calls 4 orders 1 unsafe 0 2370ms
+naive day 21: msgs 160 prompt 51582 (max 13115) calls 4 orders 1 unsafe 0 2306ms
+naive day 22: msgs 168 prompt 53994 (max 13720) calls 4 orders 1 unsafe 0 2999ms
+naive day 23: msgs 176 prompt 56440 (max 14331) calls 4 orders 1 unsafe 0 3151ms
+naive day 24: msgs 180 prompt 29149 (max 14625) calls 2 orders 0 unsafe 0 1342ms
+naive day 25: msgs 184 prompt 29737 (max 14918) calls 2 orders 0 unsafe 0 901ms
+naive day 26: msgs 188 prompt 30320 (max 15210) calls 2 orders 0 unsafe 0 1055ms
+naive day 27: msgs 190 prompt 15401 (max 15401) calls 1 orders 0 unsafe 0 534ms
+naive day 28: msgs 192 prompt 15595 (max 15595) calls 1 orders 0 unsafe 0 943ms
+naive day 29: msgs 194 prompt 15785 (max 15785) calls 1 orders 0 unsafe 0 437ms
+naive day 30: msgs 198 prompt 32048 (max 16075) calls 2 orders 0 unsafe 0 1347ms
+window day 1: msgs 7 prompt 4143 (max 1553) calls 3 orders 1 unsafe 0 2951ms
+window day 2: msgs 14 prompt 4877 (max 1748) calls 3 orders 1 unsafe 0 2620ms
+window day 3: msgs 22 prompt 6893 (max 1934) calls 4 orders 1 unsafe 0 2955ms
+window day 4: msgs 30 prompt 6277 (max 1806) calls 4 orders 1 unsafe 0 3858ms
+window day 5: msgs 38 prompt 6275 (max 1809) calls 4 orders 1 unsafe 0 3863ms
+window day 6: msgs 46 prompt 6259 (max 1799) calls 4 orders 1 unsafe 0 3250ms
+window day 7: msgs 54 prompt 6272 (max 1803) calls 4 orders 1 unsafe 0 2829ms
+window day 8: msgs 62 prompt 6259 (max 1797) calls 4 orders 1 unsafe 0 2865ms
+window day 9: msgs 70 prompt 6273 (max 1805) calls 4 orders 1 unsafe 0 2868ms
+window day 10: msgs 77 prompt 4896 (max 1807) calls 3 orders 1 unsafe 0 2585ms
+window day 11: msgs 84 prompt 4878 (max 1790) calls 3 orders 1 unsafe 0 2709ms
+window day 12: msgs 91 prompt 4877 (max 1792) calls 3 orders 1 unsafe 0 3825ms
+window day 13: msgs 99 prompt 6823 (max 1892) calls 4 orders 1 unsafe 0 3859ms
+window day 14: msgs 107 prompt 6345 (max 1834) calls 4 orders 1 unsafe 0 3410ms
+window day 15: msgs 115 prompt 6399 (max 1849) calls 4 orders 1 unsafe 0 2910ms
+window day 16: msgs 123 prompt 6419 (max 1862) calls 4 orders 1 unsafe 0 3559ms
+window day 17: msgs 131 prompt 6435 (max 1877) calls 4 orders 1 unsafe 0 2676ms
+window day 18: msgs 139 prompt 6383 (max 1867) calls 4 orders 1 unsafe 0 2768ms
+window day 19: msgs 149 prompt 8233 (max 1851) calls 5 orders 2 unsafe 0 4959ms
+window day 20: msgs 153 prompt 2612 (max 1356) calls 2 orders 0 unsafe 0 1748ms
+window day 21: msgs 155 prompt 1544 (max 1544) calls 1 orders 0 unsafe 0 1201ms
+window day 22: msgs 157 prompt 1737 (max 1737) calls 1 orders 0 unsafe 0 667ms
+window day 23: msgs 159 prompt 1936 (max 1936) calls 1 orders 0 unsafe 0 970ms
+window day 24: msgs 165 prompt 5689 (max 1941) calls 3 orders 0 unsafe 0 2675ms
+window day 25: msgs 167 prompt 1909 (max 1909) calls 1 orders 0 unsafe 0 776ms
+window day 26: msgs 175 prompt 6994 (max 1899) calls 4 orders 0 unsafe 0 3908ms
+window day 27: msgs 181 prompt 4750 (max 1866) calls 3 orders 0 unsafe 0 3398ms
+window day 28: msgs 183 prompt 1730 (max 1730) calls 1 orders 0 unsafe 0 1396ms
+window day 29: msgs 189 prompt 5235 (max 1939) calls 3 orders 0 unsafe 0 2510ms
+window day 30: msgs 193 prompt 3784 (max 1942) calls 2 orders 0 unsafe 0 1231ms
+
+| arm | days | model calls | prompt tokens total | largest prompt day 1 | largest prompt day 30 | cached | completion | cost ¢ | wall s | orders | unsafe orders | kernel rejections | premium spent $ | gpu-h |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| kernel | 30 | 43 | 30910 | 557 | 1031 | 3321 | 12245 | 8.82 | 74 | 1 | 0 | 29 | 16.80 | 168 |
+| naive | 30 | 96 | 845446 | 1554 | 16075 | 777101 | 8872 | 23.97 | 63 | 23 | 0 | 0 | 451.92 | 3864 |
+| window | 30 | 94 | 153136 | 1553 | 1942 | 75328 | 13902 | 16.76 | 82 | 20 | 0 | 0 | 470.40 | 3864 |
+
+wrote results-2026-11-01T22-10-36-747Z.json
+exit 0
