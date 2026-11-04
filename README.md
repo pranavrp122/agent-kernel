@@ -63,7 +63,7 @@ Needs a C++20 compiler. No CMake, no dependencies beyond the vendored nlohmann/j
 
 ```sh
 sh build.sh                 # kernel, tests, benchmark
-./build/test_kernel.exe     # 53 checks
+./build/test_kernel.exe     # 54 checks
 ./build/bench.exe           # the latency table above
 printf '{"id":1,"op":"spawn","tenant":"acme","name":"hedger","limits":{"max_premium_cents":50000}}\n{"id":2,"op":"ps"}\n' | ./build/kernel.exe
 ```
