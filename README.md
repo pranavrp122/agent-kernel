@@ -12,9 +12,9 @@ flowchart LR
     K --- S[scheduler] --- C[context assembler] --- R[risk gate]
 ```
 
-![The kernel console: four agents in the process table, the log-scale latency ladder, the turn feed with accepted orders, and the replay log](docs/console.png)
+![The kernel console, with four agents in the process table, the log-scale latency ladder, the turn feed with accepted orders, and the replay log](docs/console.png)
 
-Four agents on the console, one of them submitted by an outside MCP client. Every row is kernel state: context tokens against budget, premium spent, delta-weighted GPU-hours, orders booked. The ladder on the right puts the kernel (16 µs) and the model (2.1 s) on one log axis.
+Four agents on the console, one of them submitted by an outside MCP client. Every row is kernel state, so context tokens against budget, premium spent, delta-weighted GPU-hours and orders booked all come from the kernel. The ladder on the right puts the kernel (16 µs) and the model (2.1 s) on one log axis.
 
 ## Why a kernel
 
@@ -22,12 +22,12 @@ An agent that trades for a week will see thousands of events. If every event lan
 
 | OS idea | Here | Effect |
 |---|---|---|
-| process control block | `Process` struct: identity, limits, exposure, usage, three tiers of memory | every agent is isolated and billable |
+| process control block | one `Process` struct per agent with its identity, limits, exposure, usage and three tiers of memory | every agent is isolated and billable |
 | fair-share scheduler | two-level virtual runtime, tenant first then process | ten agents from one customer cannot starve another customer's one |
 | interrupts | market ticks, settlement events, clock | an agent with nothing new never burns a model call |
 | virtual memory | context assembler with a hard token budget, newest first, dropped items counted | prompt size is flat at turn 1 and turn 100 |
 | garbage collector | evicted history is summarized by a cheap second model into a working set | long memory without long prompts |
-| syscall validation | eight integer checks per order: premium, GPU-hours, delta, strike band, slippage, per-turn count | the model proposes, the kernel disposes |
+| syscall validation | eight integer checks per order, on premium, GPU-hours, delta, strike band, slippage and per-turn count | the model proposes, the kernel disposes |
 | audit log | bounded replay log of every state change with its own timing | replayable, benchmarkable |
 
 ## Numbers
@@ -44,7 +44,7 @@ Measured on a Snapdragon X Elite laptop, 64 processes across 8 tenants, 20,000 i
 | Node to kernel pipe round trip | 0.15 ms | 2.2 ms |
 | model call, Muse Spark 1.3, minimal effort | 2.3 s | 3.4 s |
 
-Model choice came from an evaluation on the kernel's own prompts across six Meta models and two effort settings, 144 calls. Short version: minimal effort is the only reliable setting, five of six models then agree on every decision, and the cheapest valid one costs 0.013¢ per agent turn. Full tables in [docs/MODEL-EVAL.md](docs/MODEL-EVAL.md).
+Model choice came from an evaluation on the kernel's own prompts across six Meta models and two effort settings, 144 calls. Minimal effort turned out to be the only reliable setting, five of six models then agree on every decision, and the cheapest valid one costs 0.013¢ per agent turn. Full tables in [docs/MODEL-EVAL.md](docs/MODEL-EVAL.md).
 
 The same strategy was also run for 30 simulated days as a stock LangGraph ReAct agent against the same order book, the loop TradingAgents and ai-hedge-fund are built on, with and without the kernel in front of it:
 
@@ -68,7 +68,7 @@ sh build.sh                 # kernel, tests, benchmark
 printf '{"id":1,"op":"spawn","tenant":"acme","name":"hedger","limits":{"max_premium_cents":50000}}\n{"id":2,"op":"ps"}\n' | ./build/kernel.exe
 ```
 
-The kernel speaks newline-delimited JSON on stdin and stdout, one object per line, `id` echoed. Operations: `spawn`, `interrupt`, `schedule`, `submit`, `gc`, `kill`, `ps`, `stats`, `replay`. Every reply carries `ns`, the kernel's own timing of that call.
+The kernel speaks newline-delimited JSON on stdin and stdout, one object per line, `id` echoed. The operations are `spawn`, `interrupt`, `schedule`, `submit`, `gc`, `kill`, `ps`, `stats` and `replay`. Every reply carries `ns`, the kernel's own timing of that call.
 
 ## Layout
 
@@ -84,4 +84,4 @@ The Node driver, the console page at `/kernel`, and the MCP tools live in the Do
 
 ## What it is not
 
-It runs in userspace and touches no hardware; "kernel" is the operating-system analogy, not a claim. The CPU it schedules is probabilistic, which is the one thing a real kernel never had to design for, and the reason every instruction the model emits is validated before it can touch the world.
+It runs in userspace and touches no hardware. "Kernel" is the operating-system analogy, not a claim. The CPU it schedules is probabilistic, which is the one thing a real kernel never had to design for, and the reason every instruction the model emits is validated before it can touch the world.
