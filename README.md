@@ -84,4 +84,4 @@ The Node driver, the console page at `/kernel`, and the MCP tools live in the Do
 
 ## What it is not
 
-It runs in userspace and touches no hardware. "Kernel" is the operating-system analogy, not a claim. The CPU it schedules is probabilistic, which is the one thing a real kernel never had to design for, and the reason every instruction the model emits is validated before it can touch the world.
+It runs in userspace and touches no hardware, so "kernel" is the operating-system analogy rather than a claim. The CPU it schedules is probabilistic, which is the one thing a real kernel never had to design for, and the reason every instruction the model emits is validated before it can touch the world.

@@ -4,7 +4,7 @@ This document explains the project piece by piece so you can read it later and u
 
 ## What this is in one paragraph
 
-Dodona is a marketplace where customers buy options on GPU compute: a **cap** protects you if the price of an hour of GPU goes up, a **floor** protects a seller if it goes down, a **lock** fixes the price. Customers do not trade by hand. They send an AI agent. This repo is the **kernel** that runs those agents. It decides which agent runs next, what the agent is allowed to see, what the agent is allowed to do, and how much it has cost. The agent's "brain" is a language model (Meta's Muse Spark). The kernel treats the model like a CPU: fast, powerful, and not to be trusted with the rules.
+Dodona is a marketplace where customers buy options on GPU compute, where a **cap** protects you if the price of an hour of GPU goes up, a **floor** protects a seller if it goes down, and a **lock** fixes the price. Customers do not trade by hand. They send an AI agent. This repo is the **kernel** that runs those agents. It decides which agent runs next, what the agent is allowed to see, what the agent is allowed to do, and how much it has cost. The agent's "brain" is a language model (Meta's Muse Spark). The kernel treats the model like a CPU, fast, powerful, and not to be trusted with the rules.
 
 ## The operating system analogy
 
@@ -21,7 +21,7 @@ Dodona is a marketplace where customers buy options on GPU compute: a **cap** pr
 | Syscall validation | Risk gate in `include/risk.hpp` | Rejects orders that break the customer's limits |
 | Audit log | Replay log inside `Kernel` | Every state change can be replayed |
 
-The one thing with no OS equivalent: the CPU is probabilistic. A real CPU executes exactly what you give it. A model might hallucinate an order, ignore a limit, or answer in prose. So the kernel validates every instruction the CPU emits and budgets tokens instead of bytes.
+The one thing with no OS equivalent is that the CPU is probabilistic. A real CPU executes exactly what you give it. A model might hallucinate an order, ignore a limit, or answer in prose. So the kernel validates every instruction the CPU emits and budgets tokens instead of bytes.
 
 ## Architecture
 
@@ -81,7 +81,7 @@ sequenceDiagram
     N->>N: write accepted orders to SQLite
 ```
 
-Where the time goes: the kernel steps are microseconds. The model call is hundreds of milliseconds. The latency work is therefore almost entirely about the model call. See the latency section.
+As for where the time goes, the kernel steps are microseconds. The model call is hundreds of milliseconds. The latency work is therefore almost entirely about the model call. See the latency section.
 
 ## Repo map
 
@@ -127,25 +127,25 @@ Every reply carries `ns`, the kernel's own measurement of how long that operatio
 
 ### Transport (`src/main.cpp`)
 
-Reads a line, parses it, hands it to the kernel, prints the reply, flushes. Two details matter. `std::flush` after every line: when stdout is a pipe the runtime buffers output, so without the flush Node would wait forever for a reply that is sitting in a buffer. `_setmode(..., _O_BINARY)` on Windows: otherwise the runtime rewrites `\n` as `\r\n` and the protocol is no longer "one line, one message."
+Reads a line, parses it, hands it to the kernel, prints the reply, flushes. Two details matter. `std::flush` after every line, because when stdout is a pipe the runtime buffers output, so without the flush Node would wait forever for a reply that is sitting in a buffer. `_setmode(..., _O_BINARY)` on Windows, because otherwise the runtime rewrites `\n` as `\r\n` and the protocol is no longer "one line, one message."
 
 ### Integer money (`include/types.hpp`)
 
-`Cents` is a 64-bit integer. Delta is in basis points. Premiums, strikes, limits: all integers. Floating point cannot represent 0.10 exactly, and a risk check that is off by a rounding error is a risk check that can be gamed. Every trading system that survives contact with an auditor does this.
+`Cents` is a 64-bit integer. Delta is in basis points. Premiums, strikes and limits are all integers. Floating point cannot represent 0.10 exactly, and a risk check that is off by a rounding error is a risk check that can be gamed. Every trading system that survives contact with an auditor does this.
 
 ### Ring buffer (`include/ring.hpp`)
 
-A fixed array of 16 slots. When full, pushing a new entry overwrites the oldest and returns it. The kernel catches the returned entry and parks it in `evicted`, which is the queue of history waiting for the summarizer. This is how the context stays flat: history is bounded by construction, not by hoping the model stays terse.
+A fixed array of 16 slots. When full, pushing a new entry overwrites the oldest and returns it. The kernel catches the returned entry and parks it in `evicted`, which is the queue of history waiting for the summarizer. This is how the context stays flat, since history is bounded by construction, not by hoping the model stays terse.
 
 ### The process control block (`include/pcb.hpp`)
 
-`Process` holds identity (`pid`, `tenant`, `name`), the scheduler's view (`state`, `weight`, `vruntime`), the context budget, the hard `Limits` the customer set, the running `Exposure`, the `Usage` meter, and three tiers of memory: `working_set` (a short summary, slow to change), `recent` (the ring of the last 16 things that happened), and `pending` (interrupts not yet shown to the model).
+`Process` holds identity (`pid`, `tenant`, `name`), the scheduler's view (`state`, `weight`, `vruntime`), the context budget, the hard `Limits` the customer set, the running `Exposure`, the `Usage` meter, and three tiers of memory, `working_set` (a short summary, slow to change), `recent` (the ring of the last 16 things that happened), and `pending` (interrupts not yet shown to the model).
 
-States: `Blocked` (asleep, nothing to do), `Ready` (an interrupt arrived), `Running` (its context has been handed to the model, waiting for the answer), `Terminated`.
+The states are `Blocked` (asleep, nothing to do), `Ready` (an interrupt arrived), `Running` (its context has been handed to the model, waiting for the answer), `Terminated`.
 
 ### Scheduler (`include/scheduler.hpp`)
 
-Two-level fair share, borrowed from Linux's CFS. Every process has a `vruntime` that grows by `tokens * 1000 / weight` each turn, and every tenant has a clock that grows by the same amount. `pick_next` chooses the Ready process whose tenant has consumed the least, breaking ties by the process that has consumed the least. The result: a tenant with ten agents cannot starve a tenant with one, and within a tenant a weight of 3 runs three times as often as a weight of 1. It is a linear scan over at most 256 processes, which is faster than a heap at that size because the data fits in cache.
+Two-level fair share, borrowed from Linux's CFS. Every process has a `vruntime` that grows by `tokens * 1000 / weight` each turn, and every tenant has a clock that grows by the same amount. `pick_next` chooses the Ready process whose tenant has consumed the least, breaking ties by the process that has consumed the least. The result is that a tenant with ten agents cannot starve a tenant with one, and within a tenant a weight of 3 runs three times as often as a weight of 1. It is a linear scan over at most 256 processes, which is faster than a heap at that size because the data fits in cache.
 
 ### Interrupts (`op_interrupt` in `src/kernel.cpp`)
 
@@ -155,11 +155,11 @@ An interrupt has a kind, a payload, and a sequence number. It is delivered to on
 
 The paging system. Given a process and a token budget it produces two strings. The **system** string is the agent's role plus its hard limits plus the response contract. It only changes when limits change, so the API can cache it (cached input is about a tenth the price). The **user** string is state, then pending interrupts newest first, then the working set, then recent history newest first.
 
-Selection is greedy in priority order: an item is included only if it still fits. Anything that does not fit is counted in `dropped` and `truncated` is set, so the dashboard can show exactly how much history had to be left out. Token estimate is bytes divided by four, which is deliberately conservative for JSON.
+Selection is greedy in priority order, so an item is included only if it still fits. Anything that does not fit is counted in `dropped` and `truncated` is set, so the dashboard can show exactly how much history had to be left out. Token estimate is bytes divided by four, which is deliberately conservative for JSON.
 
 ### Risk gate (`include/risk.hpp`)
 
-`check_order` runs eight checks in order and returns the first reason code that fails, or an empty string. The reason codes are short words (`max_premium`, `strike_band`, `slippage`) because they are fed back to the model next turn through `recent`, so the model learns the boundary. `apply_order` only runs on acceptance and updates `Exposure`. The pair is pure: no I/O, no allocation beyond the reason string, which is why it benchmarks in nanoseconds.
+`check_order` runs eight checks in order and returns the first reason code that fails, or an empty string. The reason codes are short words (`max_premium`, `strike_band`, `slippage`) because they are fed back to the model next turn through `recent`, so the model learns the boundary. `apply_order` only runs on acceptance and updates `Exposure`. The pair is pure, with no I/O, no allocation beyond the reason string, which is why it benchmarks in nanoseconds.
 
 ### Replay log and stats
 
@@ -176,14 +176,14 @@ The kernel never talks to the network. Four small modules in `lib/` do, and toge
 | `lib/agent-runtime.mjs` | The loop: `spawn`, `tick`, `run`, `finish` | `enrich()` prices each syscall with the platform's own Black-76 quote before the kernel sees it, so the risk gate checks real premiums and deltas, not the model's guesses |
 | `lib/kernel-routes.mjs` | `/api/kernel/*` | The runtime starts on first use, so a server without a kernel binary or an API key still boots |
 
-The page at `/kernel` (`kernel.html`, `kernel.js`, `kernel.css`) is the console: an htop-style process table, a log-scale latency ladder, the turn feed and the replay log, polled every 2.5 s.
+The page at `/kernel` (`kernel.html`, `kernel.js`, `kernel.css`) is the console, an htop-style process table, a log-scale latency ladder, the turn feed and the replay log, polled every 2.5 s.
 
 ### What `finish()` does, in order
 
 1. Send the kernel's `system` and `user` strings to Muse Spark with `response_format: json_schema` so the reply can only be `{"syscalls":[...],"note":"..."}`.
 2. For each `order` syscall, quote it exactly as the checkout page would (`quoteFromHistory` at the tenant's demo clock), then attach `premium_cents`, `index_cents` (the forward), `gpu_hours` and `delta_bps` (Black-76 delta times GPU-hours times 10,000).
 3. `submit` to the kernel. The kernel runs the eight risk checks per order and returns `accepted` and `rejected` with reason codes.
-4. Only accepted orders are booked: `createOrder` plus `recordPaid` in one SQLite transaction, which is the same path a human takes through checkout. The order then shows up on `/orders` like any other.
+4. Only accepted orders are booked, through `createOrder` plus `recordPaid` in one SQLite transaction, which is the same path a human takes through checkout. The order then shows up on `/orders` like any other.
 5. If the kernel says `needs_gc`, the summarizer folds the evicted history into a new working set and `gc` stores it.
 6. Record the turn (tokens, cost, latency, decisions) for the console.
 
@@ -214,7 +214,7 @@ Dodona already exposes an MCP server at `/mcp`. Three tools were added in `lib/m
 | `run_agents` | Advances the demo clock, wakes every agent, runs a scheduler round through the model. |
 | `agent_status` | The process-table row and the last five turns for one pid. |
 
-The outside agent never sees a prompt, never manages a context window and never touches an order directly. It states what it wants and what it is allowed to risk; the kernel does the rest. A real MCP client did this against the running server on 2026-11-01:
+The outside agent never sees a prompt, never manages a context window and never touches an order directly. It states what it wants and what it is allowed to risk, and the kernel does the rest. A real MCP client did this against the running server on 2026-11-01:
 
 ```
 submit_intent  goal "i run a weekly fine-tuning job on 16 h100s. cap my cost for the next
@@ -241,9 +241,9 @@ The second mode in the design, bring-your-own-brain (the outside model is the CP
 | schedule, JSON in and out | 8.3 µs | 10.5 µs | 29.7 µs |
 | submit two orders, JSON in and out | 16.1 µs | 19.3 µs | 55.9 µs |
 
-The gap between the "only" rows and the JSON rows is the cost of the wire format, about 7 µs per message to parse and serialize. It is the largest cost inside the kernel and still three hundred thousand times smaller than one model call. The first benchmark run exposed a real bug: without a cap on parked evictions, submit grew to 90 µs because every reply copied an ever-growing list. Bounding it (`EVICTED_MAX`) fixed both the number and the design.
+The gap between the "only" rows and the JSON rows is the cost of the wire format, about 7 µs per message to parse and serialize. It is the largest cost inside the kernel and still three hundred thousand times smaller than one model call. The first benchmark run exposed a real bug, since without a cap on parked evictions, submit grew to 90 µs because every reply copied an ever-growing list. Bounding it (`EVICTED_MAX`) fixed both the number and the design.
 
-## Latency: where it goes and how to lower it
+## Latency, where it goes and how to lower it
 
 | Stage | Typical cost | Lever |
 |---|---|---|
@@ -255,11 +255,11 @@ The gap between the "only" rows and the JSON rows is the cost of the wire format
 | Model output | ~20 ms per 10 tokens | structured output with a tight schema, no prose |
 | Prompt size | pay per token | stable system prefix for caching, hard token budget |
 
-The honest summary: the kernel is three to four orders of magnitude faster than the model, so the kernel's job is to never be the bottleneck and to make the model call as small as possible. The model evaluation log records which model and effort setting gives the lowest latency and cost that still produces valid syscalls.
+In short, the kernel is three to four orders of magnitude faster than the model, so the kernel's job is to never be the bottleneck and to make the model call as small as possible. The model evaluation log records which model and effort setting gives the lowest latency and cost that still produces valid syscalls.
 
 ## Testing approach
 
-Tests are plain C++ with a `CHECK` macro, built by `build.sh` and run as `build/test_kernel.exe`. GoogleTest and CMake were skipped because neither is installed on this ARM64 Windows laptop and the hackathon deadline did not allow for toolchain work. The tests cover: the ring buffer, spawn and lifecycle, every risk-gate reason code, tenant fair share and weights, the context budget staying flat over 60 turns, the gc cycle, and replay/stats.
+Tests are plain C++ with a `CHECK` macro, built by `build.sh` and run as `build/test_kernel.exe`. GoogleTest and CMake were skipped because neither is installed on this ARM64 Windows laptop and the hackathon deadline did not allow for toolchain work. The tests cover the ring buffer, spawn and lifecycle, every risk-gate reason code, tenant fair share and weights, the context budget staying flat over 60 turns, the gc cycle, and replay/stats.
 
 ## How to run
 
@@ -272,11 +272,11 @@ printf '{"id":1,"op":"spawn","tenant":"acme","name":"hedger","limits":{"max_prem
 
 ## Glossary
 
-- **cap / floor / lock**: call option, put option, and fixed-price forward on GPU hours.
-- **premium**: what you pay for the option, in cents.
-- **strike**: the price level the option protects.
-- **delta**: how much the option's value moves when the underlying moves, in basis points.
-- **tenant**: one customer; may own many agents.
-- **vruntime**: virtual runtime, the scheduler's fairness counter.
-- **working set**: the short summary of everything the agent has done that no longer fits in recent history.
-- **gc**: garbage collection, here meaning summarization of evicted history.
+- A **cap**, a **floor** and a **lock** are a call option, a put option and a fixed-price forward on GPU hours.
+- The **premium** is what you pay for the option, in cents.
+- The **strike** is the price level the option protects.
+- **Delta** is how much the option's value moves when the underlying moves, in basis points.
+- A **tenant** is one customer, who may own many agents.
+- **vruntime** is virtual runtime, the scheduler's fairness counter.
+- The **working set** is the short summary of everything the agent has done that no longer fits in recent history.
+- **gc** is garbage collection, here meaning summarization of evicted history.
